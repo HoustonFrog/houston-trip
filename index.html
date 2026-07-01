@@ -17,6 +17,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  html,body{max-width:100%;overflow-x:hidden;}
   body{
     font-family:"Georgia","Times New Roman",serif;
     background:var(--bg);
@@ -25,6 +26,7 @@
     padding:0;
     line-height:1.55;
   }
+  .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   a{color:var(--blue);}
   section{scroll-margin-top:64px;}
 
@@ -328,12 +330,23 @@
   #backToTop:hover{background:var(--blue);}
 
   @media(max-width:640px){
-    nav.topnav{flex-direction:column;align-items:flex-start;padding:8px 16px;}
-    nav.topnav ul{gap:0;}
-    nav.topnav ul li a{padding:8px 8px;font-size:12px;}
+    nav.topnav{flex-direction:column;align-items:flex-start;padding:6px 12px;}
+    nav.topnav .brand{padding:10px 0 4px;font-size:13px;}
+    nav.topnav ul{
+      gap:2px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      width:100%;
+      padding-bottom:6px;
+    }
+    nav.topnav ul li{flex:0 0 auto;}
+    nav.topnav ul li a{padding:10px 12px;font-size:14px;white-space:nowrap;}
     .snapshot{grid-template-columns:repeat(2,1fr);}
     .hotel-grid{grid-template-columns:1fr;}
     .overview-grid{grid-template-columns:1fr;}
+    table.timeline, table.budget{font-size:12.5px;}
+    table.timeline td, table.budget td{padding:9px 8px;}
   }
 </style>
 </head>
@@ -431,6 +444,7 @@
   <section id="day1">
     <h2 class="section-title">Day 1 &mdash; Arrival, Museum District &amp; Texas BBQ</h2>
     <div class="card">
+      <div class="table-scroll">
       <table class="timeline">
         <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
         <tr>
@@ -479,6 +493,7 @@
           <td class="cost">~USD 15&ndash;20</td>
         </tr>
       </table>
+      </div>
     </div>
     <div class="note">
       Truth BBQ hours vary by day: Tue&ndash;Fri 11am&ndash;3pm &amp; 5&ndash;8pm, Sat 11am&ndash;8pm, Sun 11am&ndash;4pm, <strong>closed Mondays</strong>. If Day 1 falls on a Sunday or Monday, swap in <a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ</a> (2100 Taylor St, open daily) or shift BBQ to a late lunch instead of dinner.
@@ -488,6 +503,7 @@
   <section id="day2">
     <h2 class="section-title">Day 2 &mdash; NASA Space Center Houston &amp; Departure</h2>
     <div class="card">
+      <div class="table-scroll">
       <table class="timeline">
         <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
         <tr>
@@ -536,6 +552,7 @@
           <td class="cost">&mdash;</td>
         </tr>
       </table>
+      </div>
     </div>
     <div class="note">
       Space Center Houston is open 10am&ndash;6pm on weekdays and 9am&ndash;6pm on weekends &mdash; if Day 2 is a Saturday or Sunday, the visit can start at 9:00 AM instead, opening up extra buffer time before the airport. Buy tickets online in advance at <a href="https://spacecenter.org/" target="_blank" rel="noopener">spacecenter.org</a> to save USD 5/person and skip the ticket line.
@@ -602,6 +619,7 @@
   <section id="budget">
     <h2 class="section-title">Estimated Budget Summary (2 people, excluding flights)</h2>
     <div class="card">
+      <div class="table-scroll">
       <table class="budget">
         <tr><th>Item</th><th>Notes</th><th style="text-align:right;">Cost</th></tr>
         <tr><td>Hotel &times; 2 nights</td><td>Hyatt Place Medical Center, approx. rate</td><td class="amt">USD 200&ndash;300</td></tr>
@@ -620,6 +638,7 @@
         <tr class="subtotal"><td colspan="2">Day 2 subtotal</td><td class="amt">USD 203&ndash;245</td></tr>
         <tr class="grand"><td colspan="2">Estimated Grand Total (hotel + food + tickets + all rides)</td><td class="amt">~USD 600&ndash;800</td></tr>
       </table>
+      </div>
     </div>
     <div class="note">
       All figures are current estimates based on published menus, ticket prices, and typical Uber fares; actual costs will vary with traffic, surge pricing, and exact travel dates. Figures exclude flights, travel insurance, and personal shopping.
