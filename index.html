@@ -227,45 +227,54 @@
   .badge.must{background:#fdecea;color:#c0392b;}
   .badge.rec{background:#e8f0fb;color:var(--blue);}
 
-  table.timeline{
-    width:100%;
-    border-collapse:collapse;
+  /* Day 1 / Day 2 timeline — stacked list, no horizontal scroll needed */
+  .timeline-legend{
     font-family:Arial,Helvetica,sans-serif;
-    font-size:14px;
-  }
-  table.timeline th{
-    text-align:left;
-    background:var(--navy);
-    color:#fff;
-    padding:10px 12px;
     font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-  }
-  table.timeline td{
-    padding:12px;
+    color:var(--muted);
+    font-style:italic;
+    margin:0 0 6px;
+    padding-bottom:8px;
     border-bottom:1px solid var(--line);
-    vertical-align:top;
   }
-  table.timeline tr:last-child td{border-bottom:none;}
-  table.timeline td.time{
-    white-space:nowrap;
+  .timeline-list{display:flex;flex-direction:column;font-family:Arial,Helvetica,sans-serif;}
+  .titem{
+    padding:12px 6px;
+    border-bottom:1px solid var(--line);
+  }
+  .titem:last-child{border-bottom:none;}
+  .titem-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:4px;
+  }
+  .titem-time{
     font-weight:bold;
     color:var(--blue);
-    width:90px;
-  }
-  table.timeline td.cost{
+    font-size:13.5px;
     white-space:nowrap;
-    text-align:right;
-    color:#2f6b2f;
-    font-weight:bold;
-    width:110px;
   }
-  table.timeline td.activity strong{display:block;color:var(--navy);font-size:14.5px;}
-  table.timeline td.activity a{color:var(--navy);}
-  table.timeline td.activity span.loc{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;}
-  tr.transport td{background:#faf8f2;font-style:italic;color:var(--muted);}
-  tr.transport td.cost{color:#8a6d1a;}
+  .titem-cost{
+    font-weight:bold;
+    color:#2f6b2f;
+    font-size:13.5px;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .titem-main strong{display:block;color:var(--navy);font-size:14.5px;margin-bottom:2px;}
+  .titem-main a{color:var(--navy);}
+  .titem-main span.loc{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;}
+  .titem-main span.costnote{display:block;color:var(--muted);font-size:12px;font-weight:normal;margin-top:2px;text-align:left;}
+  .titem.transport{background:#faf8f2;border-radius:8px;padding-left:10px;padding-right:10px;}
+  .titem.transport .titem-main{font-style:italic;color:var(--muted);}
+  .titem.transport .titem-cost{color:#8a6d1a;}
+  @media(min-width:641px){
+    .titem-row{align-items:center;}
+    .titem-time{font-size:14px;}
+    .titem-cost{font-size:14px;}
+  }
 
   table.budget{
     width:100%;
@@ -444,55 +453,44 @@
   <section id="day1">
     <h2 class="section-title">Day 1 &mdash; Arrival, Museum District &amp; Texas BBQ</h2>
     <div class="card">
-      <div class="table-scroll">
-      <table class="timeline">
-        <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
-        <tr>
-          <td class="time">9:00 AM</td>
-          <td class="activity"><strong>Land at George Bush Intercontinental Airport (IAH)</strong><span class="loc">Baggage claim, ~30&ndash;45 min for domestic arrival</span></td>
-          <td class="cost">&mdash;</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">~9:45 AM</td>
-          <td class="activity">Uber from IAH to hotel <span class="loc">~35&ndash;40 min drive</span></td>
-          <td class="cost">~USD 47&ndash;55</td>
-        </tr>
-        <tr>
-          <td class="time">10:45 AM</td>
-          <td class="activity"><strong>Check in at hotel</strong><span class="loc">Request early check-in; freshen up</span></td>
-          <td class="cost">&mdash;</td>
-        </tr>
-        <tr>
-          <td class="time">12:00 PM</td>
-          <td class="activity"><strong>Lunch at <a href="https://www.hermannpark.org/place/pinewood-cafe/" target="_blank" rel="noopener">Pinewood Cafe</a> or Sandy Witch</strong><span class="loc">Casual cafe inside Hermann Park, sandwiches/salads, plenty of seating</span></td>
-          <td class="cost">~USD 30&ndash;40</td>
-        </tr>
-        <tr>
-          <td class="time">1:00 &ndash; 3:30 PM</td>
-          <td class="activity"><strong><a href="https://www.hermannpark.org/" target="_blank" rel="noopener">Hermann Park</a> stroll + <a href="https://www.hmns.org/" target="_blank" rel="noopener">Houston Museum of Natural Science</a></strong><span class="loc">McGovern Centennial Gardens (free) then dinosaur, gems &amp; Egypt halls &mdash; relaxed indoor pace, lots of benches</span></td>
-          <td class="cost">~USD 50 <span style="font-weight:normal;color:var(--muted);">(USD 25 pp; ask about 62+ senior rate at the box office, ~USD 16&ndash;20 pp)</span></td>
-        </tr>
-        <tr>
-          <td class="time">4:00 PM</td>
-          <td class="activity"><strong>Return to hotel, rest</strong><span class="loc">Short walk or 5-min Uber back to hotel</span></td>
-          <td class="cost">USD 0&ndash;10</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">5:00 PM</td>
-          <td class="activity">Uber from hotel to Truth BBQ <span class="loc">~20&ndash;25 min drive to the Heights</span></td>
-          <td class="cost">~USD 15&ndash;20</td>
-        </tr>
-        <tr>
-          <td class="time">5:30 &ndash; 6:45 PM</td>
-          <td class="activity"><strong>Dinner: <a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a> &#127829; (the must-do Texas BBQ)</strong><span class="loc">110 S Heights Blvd &mdash; Michelin-recognized brisket, sausage &amp; smoked turkey. Order 2 meat plates + sides to share.</span></td>
-          <td class="cost">~USD 55&ndash;65</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">7:00 PM</td>
-          <td class="activity">Uber back to hotel</td>
-          <td class="cost">~USD 15&ndash;20</td>
-        </tr>
-      </table>
+      <p class="timeline-legend">Times are approximate &middot; all costs shown are for two people</p>
+      <div class="timeline-list">
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">9:00 AM</span><span class="titem-cost">&mdash;</span></div>
+          <div class="titem-main"><strong>Land at George Bush Intercontinental Airport (IAH)</strong><span class="loc">Baggage claim, ~30&ndash;45 min for domestic arrival</span></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">~9:45 AM</span><span class="titem-cost">~USD 47&ndash;55</span></div>
+          <div class="titem-main">Uber from IAH to hotel <span class="loc">~35&ndash;40 min drive</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">10:45 AM</span><span class="titem-cost">&mdash;</span></div>
+          <div class="titem-main"><strong>Check in at hotel</strong><span class="loc">Request early check-in; freshen up</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">12:00 PM</span><span class="titem-cost">~USD 30&ndash;40</span></div>
+          <div class="titem-main"><strong>Lunch at <a href="https://www.hermannpark.org/place/pinewood-cafe/" target="_blank" rel="noopener">Pinewood Cafe</a> or Sandy Witch</strong><span class="loc">Casual cafe inside Hermann Park, sandwiches/salads, plenty of seating</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">1:00 &ndash; 3:30 PM</span><span class="titem-cost">~USD 50</span></div>
+          <div class="titem-main"><strong><a href="https://www.hermannpark.org/" target="_blank" rel="noopener">Hermann Park</a> stroll + <a href="https://www.hmns.org/" target="_blank" rel="noopener">Houston Museum of Natural Science</a></strong><span class="loc">McGovern Centennial Gardens (free) then dinosaur, gems &amp; Egypt halls &mdash; relaxed indoor pace, lots of benches</span><span class="costnote">USD 25 pp; ask about 62+ senior rate at the box office, ~USD 16&ndash;20 pp</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">4:00 PM</span><span class="titem-cost">USD 0&ndash;10</span></div>
+          <div class="titem-main"><strong>Return to hotel, rest</strong><span class="loc">Short walk or 5-min Uber back to hotel</span></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">5:00 PM</span><span class="titem-cost">~USD 15&ndash;20</span></div>
+          <div class="titem-main">Uber from hotel to Truth BBQ <span class="loc">~20&ndash;25 min drive to the Heights</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">5:30 &ndash; 6:45 PM</span><span class="titem-cost">~USD 55&ndash;65</span></div>
+          <div class="titem-main"><strong>Dinner: <a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a> &#127829; (the must-do Texas BBQ)</strong><span class="loc">110 S Heights Blvd &mdash; Michelin-recognized brisket, sausage &amp; smoked turkey. Order 2 meat plates + sides to share.</span></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">7:00 PM</span><span class="titem-cost">~USD 15&ndash;20</span></div>
+          <div class="titem-main">Uber back to hotel</div>
+        </div>
       </div>
     </div>
     <div class="note">
@@ -503,55 +501,44 @@
   <section id="day2">
     <h2 class="section-title">Day 2 &mdash; NASA Space Center Houston &amp; Departure</h2>
     <div class="card">
-      <div class="table-scroll">
-      <table class="timeline">
-        <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
-        <tr>
-          <td class="time">8:00 AM</td>
-          <td class="activity"><strong>Check out, store luggage with the front desk</strong><span class="loc">Space Center Houston does not allow full suitcases inside &mdash; traveling light is easier for the visit</span></td>
-          <td class="cost">USD 0 (standard hotel service)</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">8:15 AM</td>
-          <td class="activity">Uber from hotel to Space Center Houston <span class="loc">~35&ndash;40 min drive to Clear Lake</span></td>
-          <td class="cost">~USD 35&ndash;45</td>
-        </tr>
-        <tr>
-          <td class="time">10:00 AM &ndash; 12:30 PM</td>
-          <td class="activity"><strong><a href="https://spacecenter.org/" target="_blank" rel="noopener">Space Center Houston</a> &#128640; (the must-do NASA visit)</strong><span class="loc">Starship Gallery, Mission Control replica, Independence Plaza space shuttle &mdash; self-paced, seating throughout. Tram tour skipped to keep the pace relaxed.</span></td>
-          <td class="cost">~USD 60 <span style="font-weight:normal;color:var(--muted);">(USD 29.95 pp; USD 27.95 pp if 65+)</span></td>
-        </tr>
-        <tr>
-          <td class="time">12:30 &ndash; 1:15 PM</td>
-          <td class="activity"><strong>Lunch on-site</strong><span class="loc">Zero-G Diner / R2-Eatery inside Space Center Houston</span></td>
-          <td class="cost">~USD 30&ndash;40</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">1:15 PM</td>
-          <td class="activity">Uber back to hotel <span class="loc">~35&ndash;40 min drive</span></td>
-          <td class="cost">~USD 35&ndash;45</td>
-        </tr>
-        <tr>
-          <td class="time">2:00 PM</td>
-          <td class="activity"><strong>Collect luggage, restroom break</strong></td>
-          <td class="cost">&mdash;</td>
-        </tr>
-        <tr class="transport">
-          <td class="time">2:15 PM</td>
-          <td class="activity">Uber from hotel to IAH <span class="loc">~35&ndash;45 min, allowing for traffic</span></td>
-          <td class="cost">~USD 47&ndash;55</td>
-        </tr>
-        <tr>
-          <td class="time">~3:00 PM</td>
-          <td class="activity"><strong>Arrive IAH</strong><span class="loc">~2 hours before a 5:00 PM domestic departure &mdash; comfortable buffer for check-in and security</span></td>
-          <td class="cost">&mdash;</td>
-        </tr>
-        <tr>
-          <td class="time">5:00 PM</td>
-          <td class="activity"><strong>Departure</strong></td>
-          <td class="cost">&mdash;</td>
-        </tr>
-      </table>
+      <p class="timeline-legend">Times are approximate &middot; all costs shown are for two people</p>
+      <div class="timeline-list">
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">8:00 AM</span><span class="titem-cost">USD 0</span></div>
+          <div class="titem-main"><strong>Check out, store luggage with the front desk</strong><span class="loc">Space Center Houston does not allow full suitcases inside &mdash; traveling light is easier for the visit</span><span class="costnote">Standard hotel service</span></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">8:15 AM</span><span class="titem-cost">~USD 35&ndash;45</span></div>
+          <div class="titem-main">Uber from hotel to Space Center Houston <span class="loc">~35&ndash;40 min drive to Clear Lake</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">10:00 AM &ndash; 12:30 PM</span><span class="titem-cost">~USD 60</span></div>
+          <div class="titem-main"><strong><a href="https://spacecenter.org/" target="_blank" rel="noopener">Space Center Houston</a> &#128640; (the must-do NASA visit)</strong><span class="loc">Starship Gallery, Mission Control replica, Independence Plaza space shuttle &mdash; self-paced, seating throughout. Tram tour skipped to keep the pace relaxed.</span><span class="costnote">USD 29.95 pp; USD 27.95 pp if 65+</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">12:30 &ndash; 1:15 PM</span><span class="titem-cost">~USD 30&ndash;40</span></div>
+          <div class="titem-main"><strong>Lunch on-site</strong><span class="loc">Zero-G Diner / R2-Eatery inside Space Center Houston</span></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">1:15 PM</span><span class="titem-cost">~USD 35&ndash;45</span></div>
+          <div class="titem-main">Uber back to hotel <span class="loc">~35&ndash;40 min drive</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">2:00 PM</span><span class="titem-cost">&mdash;</span></div>
+          <div class="titem-main"><strong>Collect luggage, restroom break</strong></div>
+        </div>
+        <div class="titem transport">
+          <div class="titem-row"><span class="titem-time">2:15 PM</span><span class="titem-cost">~USD 47&ndash;55</span></div>
+          <div class="titem-main">Uber from hotel to IAH <span class="loc">~35&ndash;45 min, allowing for traffic</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">~3:00 PM</span><span class="titem-cost">&mdash;</span></div>
+          <div class="titem-main"><strong>Arrive IAH</strong><span class="loc">~2 hours before a 5:00 PM domestic departure &mdash; comfortable buffer for check-in and security</span></div>
+        </div>
+        <div class="titem">
+          <div class="titem-row"><span class="titem-time">5:00 PM</span><span class="titem-cost">&mdash;</span></div>
+          <div class="titem-main"><strong>Departure</strong></div>
+        </div>
       </div>
     </div>
     <div class="note">
