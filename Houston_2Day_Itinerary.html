@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Houston 2-Day Itinerary</title>
+<style>
+  :root{
+    --navy:#0b2545;
+    --blue:#1d4e89;
+    --gold:#c9972f;
+    --bg:#f7f5f0;
+    --card:#ffffff;
+    --text:#2a2a2a;
+    --muted:#6b6b6b;
+    --line:#e3ded2;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Georgia","Times New Roman",serif;
+    background:var(--bg);
+    color:var(--text);
+    margin:0;
+    padding:0;
+    line-height:1.55;
+  }
+  a{color:var(--blue);}
+  section{scroll-margin-top:64px;}
+
+  /* Top nav */
+  nav.topnav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--navy);
+    padding:0 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  nav.topnav .brand{
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+    letter-spacing:0.5px;
+    padding:14px 0;
+    white-space:nowrap;
+  }
+  nav.topnav ul{
+    list-style:none;
+    display:flex;
+    gap:4px;
+    margin:0;
+    padding:0;
+    flex-wrap:wrap;
+  }
+  nav.topnav ul li a{
+    display:block;
+    color:#dfe7f3;
+    text-decoration:none;
+    font-size:13px;
+    padding:18px 12px;
+    border-bottom:2px solid transparent;
+    transition:0.15s;
+  }
+  nav.topnav ul li a:hover{
+    color:#fff;
+    border-bottom:2px solid var(--gold);
+  }
+
+  .wrap{max-width:880px;margin:0 auto;padding:32px 24px 80px;}
+  header.hero{
+    background:linear-gradient(135deg,var(--navy),var(--blue));
+    color:#fff;
+    padding:40px 28px;
+    border-radius:10px;
+    margin-bottom:28px;
+  }
+  header.hero h1{
+    margin:0 0 6px;
+    font-size:30px;
+    letter-spacing:0.5px;
+  }
+  header.hero p.sub{
+    margin:0;
+    font-size:15px;
+    color:#dfe7f3;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  .snapshot{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:22px;
+  }
+  .snapshot div{
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:8px;
+    padding:10px 12px;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  .snapshot .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#c9d7ea;}
+  .snapshot .value{font-size:15px;font-weight:bold;margin-top:3px;}
+
+  h2.section-title{
+    font-size:21px;
+    color:var(--navy);
+    border-bottom:2px solid var(--gold);
+    padding-bottom:8px;
+    margin:38px 0 16px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    margin-bottom:18px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* Overview section */
+  .overview-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .overview-day h3{
+    margin:0 0 10px;
+    color:var(--blue);
+    font-size:16px;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  .overview-day ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:13.5px;
+  }
+  .overview-day ul li{
+    padding:8px 0 8px 22px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+  }
+  .overview-day ul li:last-child{border-bottom:none;}
+  .overview-day ul li::before{
+    content:"\25B8";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+    font-weight:bold;
+  }
+  .overview-day ul li b{color:var(--navy);}
+  .highlight-row{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+
+  .hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .hotel-card h3{margin:0 0 6px;color:var(--blue);font-size:17px;}
+  .hotel-card h3 a{color:var(--blue);text-decoration:none;}
+  .hotel-card h3 a:hover{text-decoration:underline;}
+  .hotel-card .price{
+    display:inline-block;
+    background:#eef4ec;
+    color:#2f6b2f;
+    font-weight:bold;
+    padding:3px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:6px 0 10px;
+  }
+  .hotel-card p{margin:4px 0;font-size:14px;font-family:Arial,Helvetica,sans-serif;color:var(--text);}
+  .hotel-card .why{color:var(--muted);font-size:13px;margin-top:8px;}
+  .badge{
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    padding:2px 9px;
+    border-radius:12px;
+    margin-right:6px;
+  }
+  .badge.must{background:#fdecea;color:#c0392b;}
+  .badge.rec{background:#e8f0fb;color:var(--blue);}
+
+  table.timeline{
+    width:100%;
+    border-collapse:collapse;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:14px;
+  }
+  table.timeline th{
+    text-align:left;
+    background:var(--navy);
+    color:#fff;
+    padding:10px 12px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  table.timeline td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.timeline tr:last-child td{border-bottom:none;}
+  table.timeline td.time{
+    white-space:nowrap;
+    font-weight:bold;
+    color:var(--blue);
+    width:90px;
+  }
+  table.timeline td.cost{
+    white-space:nowrap;
+    text-align:right;
+    color:#2f6b2f;
+    font-weight:bold;
+    width:110px;
+  }
+  table.timeline td.activity strong{display:block;color:var(--navy);font-size:14.5px;}
+  table.timeline td.activity a{color:var(--navy);}
+  table.timeline td.activity span.loc{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;}
+  tr.transport td{background:#faf8f2;font-style:italic;color:var(--muted);}
+  tr.transport td.cost{color:#8a6d1a;}
+
+  table.budget{
+    width:100%;
+    border-collapse:collapse;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:14px;
+  }
+  table.budget th{
+    text-align:left;
+    padding:9px 10px;
+    background:#eef1f6;
+    color:var(--navy);
+    font-size:12px;
+    text-transform:uppercase;
+  }
+  table.budget td{padding:9px 10px;border-bottom:1px solid var(--line);}
+  table.budget td.amt{text-align:right;white-space:nowrap;font-weight:bold;}
+  table.budget tr.subtotal td{background:#f7f5f0;font-weight:bold;}
+  table.budget tr.grand td{background:var(--navy);color:#fff;font-weight:bold;font-size:15px;}
+
+  ul.tips{font-family:Arial,Helvetica,sans-serif;font-size:14px;padding-left:20px;}
+  ul.tips li{margin-bottom:9px;}
+
+  .note{
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12.5px;
+    color:var(--muted);
+    background:#fbf7ea;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-top:10px;
+    border-radius:4px;
+  }
+  footer{
+    margin-top:50px;
+    text-align:center;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* Back to top button */
+  #backToTop{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    transition:background 0.15s, opacity 0.2s;
+  }
+  #backToTop:hover{background:var(--blue);}
+
+  @media(max-width:640px){
+    nav.topnav{flex-direction:column;align-items:flex-start;padding:8px 16px;}
+    nav.topnav ul{gap:0;}
+    nav.topnav ul li a{padding:8px 8px;font-size:12px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .hotel-grid{grid-template-columns:1fr;}
+    .overview-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="brand">HOUSTON &middot; 2-DAY ITINERARY</div>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#hotel">Hotel</a></li>
+    <li><a href="#day1">Day 1</a></li>
+    <li><a href="#day2">Day 2</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#shopping">Shopping</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Houston, Texas &mdash; 2-Day Itinerary</h1>
+    <p class="sub">A relaxed, public-transit &amp; rideshare-friendly plan for two &middot; September 2026</p>
+    <div class="snapshot">
+      <div><div class="label">Arrival</div><div class="value">Day 1, 9:00 AM &middot; IAH</div></div>
+      <div><div class="label">Departure</div><div class="value">Day 2, 5:00 PM &middot; IAH (domestic)</div></div>
+      <div><div class="label">Getting Around</div><div class="value">Uber only, no rental car</div></div>
+    </div>
+  </header>
+
+  <section id="overview">
+    <h2 class="section-title">Itinerary Overview</h2>
+    <div class="card">
+      <div class="overview-grid">
+        <div class="overview-day">
+          <h3>Day 1 &mdash; Arrival &amp; Museum District</h3>
+          <ul>
+            <li><b>Morning:</b> Land at IAH, Uber to hotel, check in</li>
+            <li><b>Midday:</b> Lunch near Hermann Park</li>
+            <li><b>Afternoon:</b> Hermann Park + Houston Museum of Natural Science</li>
+            <li><b>Evening:</b> Texas BBQ dinner at Truth BBQ</li>
+          </ul>
+        </div>
+        <div class="overview-day">
+          <h3>Day 2 &mdash; NASA &amp; Departure</h3>
+          <ul>
+            <li><b>Morning:</b> Check out, store bags, head to Space Center Houston</li>
+            <li><b>Late morning:</b> Explore Space Center Houston exhibits</li>
+            <li><b>Midday:</b> Lunch on-site</li>
+            <li><b>Afternoon:</b> Back to hotel for bags, then Uber to IAH for 5:00 PM flight</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <span class="badge must">Must-do: NASA Space Center Houston</span>
+        <span class="badge must">Must-do: Texas BBQ (Truth BBQ)</span>
+        <span class="badge rec">All transfers by Uber</span>
+        <span class="badge rec">Hotel under USD 200/night</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="hotel">
+    <h2 class="section-title">Where to Stay</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--muted);margin-top:-6px;">
+      Recommended area: <strong>Museum District / Texas Medical Center</strong> &mdash; centrally located between the airport, downtown, and NASA;
+      walkable and served by the METRORail Red Line; close to Hermann Park, museums, restaurants, and pharmacies; consistently rated one of Houston's safer, well-lit visitor areas.
+    </p>
+    <div class="hotel-grid">
+      <div class="card hotel-card">
+        <span class="badge rec">Top Pick</span>
+        <h3><a href="https://www.hyatt.com/hyatt-place/en-US/houzm-hyatt-place-houston-medical-center" target="_blank" rel="noopener">Hyatt Place Houston &ndash; Medical Center &#8599;</a></h3>
+        <div class="price">~USD 100&ndash;150 / night</div>
+        <p>3730 Old Spanish Trail, Houston, TX 77021</p>
+        <p>~5 min walk to METRORail Red Line (TMC/Museum District stops); free breakfast included; modern, elevator access, quiet.</p>
+        <p class="why">Why: best value-to-comfort ratio in the area, easy step-free access for older travelers, and close to casual dining.</p>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Alternate</span>
+        <h3><a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/houston/hourw/hoteldetail" target="_blank" rel="noopener">Holiday Inn Express &amp; Suites Houston S &ndash; Medical Ctr Area &#8599;</a></h3>
+        <div class="price">~USD 130&ndash;190 / night</div>
+        <p>Near Texas Medical Center / NRG Park, Houston, TX</p>
+        <p>Free hot breakfast, shuttle-friendly location, short Uber to Museum District attractions.</p>
+        <p class="why">Why: good backup if the top pick is sold out; similarly safe, well-reviewed, senior-friendly.</p>
+      </div>
+    </div>
+    <div class="note">
+      <strong>On pricing:</strong> current listings for both hotels typically fall in the USD 100&ndash;USD 190/night range depending on exact dates and demand. Hotel rates are dynamic and change often; because September 2026 is still 14+ months out, exact rates aren't locked in yet. Please re-check the live rate on the links above (or Booking.com) once your travel dates are fixed, and book directly with the hotel when possible.
+    </div>
+  </section>
+
+  <section id="day1">
+    <h2 class="section-title">Day 1 &mdash; Arrival, Museum District &amp; Texas BBQ</h2>
+    <div class="card">
+      <table class="timeline">
+        <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
+        <tr>
+          <td class="time">9:00 AM</td>
+          <td class="activity"><strong>Land at George Bush Intercontinental Airport (IAH)</strong><span class="loc">Baggage claim, ~30&ndash;45 min for domestic arrival</span></td>
+          <td class="cost">&mdash;</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">~9:45 AM</td>
+          <td class="activity">Uber from IAH to hotel <span class="loc">~35&ndash;40 min drive</span></td>
+          <td class="cost">~USD 47&ndash;55</td>
+        </tr>
+        <tr>
+          <td class="time">10:45 AM</td>
+          <td class="activity"><strong>Check in at hotel</strong><span class="loc">Request early check-in; freshen up</span></td>
+          <td class="cost">&mdash;</td>
+        </tr>
+        <tr>
+          <td class="time">12:00 PM</td>
+          <td class="activity"><strong>Lunch at <a href="https://www.hermannpark.org/place/pinewood-cafe/" target="_blank" rel="noopener">Pinewood Cafe</a> or Sandy Witch</strong><span class="loc">Casual cafe inside Hermann Park, sandwiches/salads, plenty of seating</span></td>
+          <td class="cost">~USD 30&ndash;40</td>
+        </tr>
+        <tr>
+          <td class="time">1:00 &ndash; 3:30 PM</td>
+          <td class="activity"><strong><a href="https://www.hermannpark.org/" target="_blank" rel="noopener">Hermann Park</a> stroll + <a href="https://www.hmns.org/" target="_blank" rel="noopener">Houston Museum of Natural Science</a></strong><span class="loc">McGovern Centennial Gardens (free) then dinosaur, gems &amp; Egypt halls &mdash; relaxed indoor pace, lots of benches</span></td>
+          <td class="cost">~USD 50 <span style="font-weight:normal;color:var(--muted);">(USD 25 pp; ask about 62+ senior rate at the box office, ~USD 16&ndash;20 pp)</span></td>
+        </tr>
+        <tr>
+          <td class="time">4:00 PM</td>
+          <td class="activity"><strong>Return to hotel, rest</strong><span class="loc">Short walk or 5-min Uber back to hotel</span></td>
+          <td class="cost">USD 0&ndash;10</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">5:00 PM</td>
+          <td class="activity">Uber from hotel to Truth BBQ <span class="loc">~20&ndash;25 min drive to the Heights</span></td>
+          <td class="cost">~USD 15&ndash;20</td>
+        </tr>
+        <tr>
+          <td class="time">5:30 &ndash; 6:45 PM</td>
+          <td class="activity"><strong>Dinner: <a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a> &#127829; (the must-do Texas BBQ)</strong><span class="loc">110 S Heights Blvd &mdash; Michelin-recognized brisket, sausage &amp; smoked turkey. Order 2 meat plates + sides to share.</span></td>
+          <td class="cost">~USD 55&ndash;65</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">7:00 PM</td>
+          <td class="activity">Uber back to hotel</td>
+          <td class="cost">~USD 15&ndash;20</td>
+        </tr>
+      </table>
+    </div>
+    <div class="note">
+      Truth BBQ hours vary by day: Tue&ndash;Fri 11am&ndash;3pm &amp; 5&ndash;8pm, Sat 11am&ndash;8pm, Sun 11am&ndash;4pm, <strong>closed Mondays</strong>. If Day 1 falls on a Sunday or Monday, swap in <a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ</a> (2100 Taylor St, open daily) or shift BBQ to a late lunch instead of dinner.
+    </div>
+  </section>
+
+  <section id="day2">
+    <h2 class="section-title">Day 2 &mdash; NASA Space Center Houston &amp; Departure</h2>
+    <div class="card">
+      <table class="timeline">
+        <tr><th>Time</th><th>Activity</th><th>Cost (2 people)</th></tr>
+        <tr>
+          <td class="time">8:00 AM</td>
+          <td class="activity"><strong>Check out, store luggage with the front desk</strong><span class="loc">Space Center Houston does not allow full suitcases inside &mdash; traveling light is easier for the visit</span></td>
+          <td class="cost">USD 0 (standard hotel service)</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">8:15 AM</td>
+          <td class="activity">Uber from hotel to Space Center Houston <span class="loc">~35&ndash;40 min drive to Clear Lake</span></td>
+          <td class="cost">~USD 35&ndash;45</td>
+        </tr>
+        <tr>
+          <td class="time">10:00 AM &ndash; 12:30 PM</td>
+          <td class="activity"><strong><a href="https://spacecenter.org/" target="_blank" rel="noopener">Space Center Houston</a> &#128640; (the must-do NASA visit)</strong><span class="loc">Starship Gallery, Mission Control replica, Independence Plaza space shuttle &mdash; self-paced, seating throughout. Tram tour skipped to keep the pace relaxed.</span></td>
+          <td class="cost">~USD 60 <span style="font-weight:normal;color:var(--muted);">(USD 29.95 pp; USD 27.95 pp if 65+)</span></td>
+        </tr>
+        <tr>
+          <td class="time">12:30 &ndash; 1:15 PM</td>
+          <td class="activity"><strong>Lunch on-site</strong><span class="loc">Zero-G Diner / R2-Eatery inside Space Center Houston</span></td>
+          <td class="cost">~USD 30&ndash;40</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">1:15 PM</td>
+          <td class="activity">Uber back to hotel <span class="loc">~35&ndash;40 min drive</span></td>
+          <td class="cost">~USD 35&ndash;45</td>
+        </tr>
+        <tr>
+          <td class="time">2:00 PM</td>
+          <td class="activity"><strong>Collect luggage, restroom break</strong></td>
+          <td class="cost">&mdash;</td>
+        </tr>
+        <tr class="transport">
+          <td class="time">2:15 PM</td>
+          <td class="activity">Uber from hotel to IAH <span class="loc">~35&ndash;45 min, allowing for traffic</span></td>
+          <td class="cost">~USD 47&ndash;55</td>
+        </tr>
+        <tr>
+          <td class="time">~3:00 PM</td>
+          <td class="activity"><strong>Arrive IAH</strong><span class="loc">~2 hours before a 5:00 PM domestic departure &mdash; comfortable buffer for check-in and security</span></td>
+          <td class="cost">&mdash;</td>
+        </tr>
+        <tr>
+          <td class="time">5:00 PM</td>
+          <td class="activity"><strong>Departure</strong></td>
+          <td class="cost">&mdash;</td>
+        </tr>
+      </table>
+    </div>
+    <div class="note">
+      Space Center Houston is open 10am&ndash;6pm on weekdays and 9am&ndash;6pm on weekends &mdash; if Day 2 is a Saturday or Sunday, the visit can start at 9:00 AM instead, opening up extra buffer time before the airport. Buy tickets online in advance at <a href="https://spacecenter.org/" target="_blank" rel="noopener">spacecenter.org</a> to save USD 5/person and skip the ticket line.
+    </div>
+  </section>
+
+  <section id="dining">
+    <h2 class="section-title">More Restaurant &amp; Cafe Options</h2>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--muted);margin-top:-6px;">
+      The itinerary above already covers lunch, dinner and NASA-day lunch. Here are backups and extra options for breakfast and any free time, all near the hotel or on the day's route.
+    </p>
+    <div class="hotel-grid">
+      <div class="card hotel-card">
+        <span class="badge rec">Breakfast &middot; Day 2</span>
+        <h3><a href="https://commonbondbrands.com/" target="_blank" rel="noopener">Common Bond Bistro &amp; Bakery &ndash; Med Center &#8599;</a></h3>
+        <p>Casual French-inspired bakery cafe; pastries, egg dishes, good coffee &mdash; a quick, relaxed option on checkout morning before heading to Space Center Houston.</p>
+        <p class="why">~USD 12&ndash;18 pp. Alternative: the hotel's included free breakfast if you'd rather not leave the building early.</p>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Breakfast / Brunch</span>
+        <h3><a href="https://thebreakfastklub.com/" target="_blank" rel="noopener">The Breakfast Klub &#8599;</a></h3>
+        <p>Houston institution known for wings-and-waffles and catfish &amp; grits; ~10&ndash;15 min from the Museum District. Best for a slower morning with no early appointment.</p>
+        <p class="why">~USD 15&ndash;20 pp. Expect a short wait on weekends.</p>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Lunch alternative &middot; Day 1</span>
+        <h3><a href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Local Foods &ndash; Rice Village &#8599;</a></h3>
+        <p>Healthy sandwiches, salads and grain bowls in a bright, easy-to-navigate space; a good swap for Pinewood Cafe if you're already browsing Rice Village.</p>
+        <p class="why">~USD 14&ndash;18 pp.</p>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Dinner alternative</span>
+        <h3><a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ &#8599;</a></h3>
+        <p>Open daily (unlike Truth BBQ, which is closed Mondays) &mdash; smoked turkey and rib tips are standouts. Use this if Day 1 lands on a Sunday or Monday.</p>
+        <p class="why">~USD 18&ndash;24 pp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shopping">
+    <h2 class="section-title">Shopping Along the Route</h2>
+    <div class="hotel-grid">
+      <div class="card hotel-card">
+        <span class="badge rec">Near hotel &middot; Day 1</span>
+        <h3><a href="https://ricevillageshops.com/" target="_blank" rel="noopener">Rice Village &#8599;</a></h3>
+        <p>~1.7 miles / 8&ndash;10 min Uber from the Museum District. 300+ shops from boutiques and gift stores to Anthropologie, Madewell and Lululemon, plus dozens of cafes.</p>
+        <p class="why">Best slotted into Day 1's 4:00&ndash;5:00 PM window (before BBQ) or as a swap for the museum visit if a lighter afternoon is preferred. No entry cost &mdash; browsing only.</p>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Near NASA &middot; Day 2 (optional)</span>
+        <h3><a href="https://www.baybrookmall.com/en/" target="_blank" rel="noopener">Baybrook Mall &#8599;</a></h3>
+        <p>~10 min from Space Center Houston in League City &mdash; 170+ stores including Macy's, Dillard's and JCPenney, plus an open-air lifestyle wing with a food court.</p>
+        <p class="why">Optional: works well if you skip the on-site NASA lunch and eat at the mall's food court instead, keeping total time roughly the same. Adds a mild time squeeze on Day 2 &mdash; only recommended if you're comfortable with a slightly tighter airport buffer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="budget">
+    <h2 class="section-title">Estimated Budget Summary (2 people, excluding flights)</h2>
+    <div class="card">
+      <table class="budget">
+        <tr><th>Item</th><th>Notes</th><th style="text-align:right;">Cost</th></tr>
+        <tr><td>Hotel &times; 2 nights</td><td>Hyatt Place Medical Center, approx. rate</td><td class="amt">USD 200&ndash;300</td></tr>
+        <tr><td colspan="3" style="background:#f0f0ea;font-weight:bold;color:var(--navy);">Day 1</td></tr>
+        <tr><td>Uber: IAH &rarr; Hotel</td><td>~35&ndash;40 min</td><td class="amt">USD 47&ndash;55</td></tr>
+        <tr><td>Lunch (Hermann Park cafe)</td><td>2 people</td><td class="amt">USD 30&ndash;40</td></tr>
+        <tr><td>Houston Museum of Natural Science</td><td>2 adult tickets</td><td class="amt">USD 32&ndash;50</td></tr>
+        <tr><td>Uber: Hotel &harr; Truth BBQ</td><td>round trip</td><td class="amt">USD 30&ndash;40</td></tr>
+        <tr><td>Texas BBQ dinner (Truth BBQ)</td><td>2 meat plates + sides</td><td class="amt">USD 55&ndash;65</td></tr>
+        <tr class="subtotal"><td colspan="2">Day 1 subtotal</td><td class="amt">USD 194&ndash;250</td></tr>
+        <tr><td colspan="3" style="background:#f0f0ea;font-weight:bold;color:var(--navy);">Day 2</td></tr>
+        <tr><td>Uber: Hotel &harr; Space Center Houston</td><td>round trip</td><td class="amt">USD 70&ndash;90</td></tr>
+        <tr><td>Space Center Houston tickets</td><td>2 adults (book online)</td><td class="amt">USD 56&ndash;60</td></tr>
+        <tr><td>Lunch on-site</td><td>2 people</td><td class="amt">USD 30&ndash;40</td></tr>
+        <tr><td>Uber: Hotel &rarr; IAH</td><td>~35&ndash;45 min</td><td class="amt">USD 47&ndash;55</td></tr>
+        <tr class="subtotal"><td colspan="2">Day 2 subtotal</td><td class="amt">USD 203&ndash;245</td></tr>
+        <tr class="grand"><td colspan="2">Estimated Grand Total (hotel + food + tickets + all rides)</td><td class="amt">~USD 600&ndash;800</td></tr>
+      </table>
+    </div>
+    <div class="note">
+      All figures are current estimates based on published menus, ticket prices, and typical Uber fares; actual costs will vary with traffic, surge pricing, and exact travel dates. Figures exclude flights, travel insurance, and personal shopping.
+    </div>
+  </section>
+
+  <section id="tips">
+    <h2 class="section-title">Practical Tips</h2>
+    <div class="card">
+      <ul class="tips">
+        <li><strong>Install Uber before departure</strong> and add a payment card &mdash; drivers are plentiful at IAH, the hotel, and Space Center Houston.</li>
+        <li><strong>September weather</strong> in Houston is hot and humid (around 90&deg;F / 32&deg;C) &mdash; wear light, breathable clothing, a hat, and comfortable walking shoes; bring a refillable water bottle.</li>
+        <li><strong>Book Space Center Houston tickets online in advance</strong> at <a href="https://spacecenter.org/" target="_blank" rel="noopener">spacecenter.org</a> to save USD 5 per person and avoid the ticket counter line.</li>
+        <li><strong>Space Center Houston bag policy:</strong> large bags and suitcases are not allowed inside; only small bags/purses are permitted, so leave luggage at the hotel, not in an Uber trunk.</li>
+        <li>The hotel's METRORail Red Line access is a handy free backup if a rideshare is delayed &mdash; it connects the Museum District to downtown and the Texas Medical Center.</li>
+        <li>Ask the front desk for a late luggage storage tag on Day 2 morning &mdash; this is a free, standard service at both recommended hotels.</li>
+        <li>Keep a light day bag for Day 1 sightseeing (water, sunscreen, any medications) since the main luggage stays at the hotel until departure day.</li>
+        <li>Once your exact travel dates are confirmed, re-check hotel rates, Truth BBQ hours, and Space Center Houston opening time (they shift slightly between weekday and weekend schedules).</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Prepared for a relaxed, rideshare-based 2-day Houston visit &middot; NASA Space Center Houston + Texas BBQ included as requested &middot; July 2026
+  </footer>
+
+</div>
+
+<button id="backToTop" title="Back to top" aria-label="Back to top">&uarr;</button>
+
+<script>
+  var btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+
+</body>
+</html>
