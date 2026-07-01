@@ -28,6 +28,40 @@
   a{color:var(--blue);}
   section{scroll-margin-top:64px;}
 
+  /* Clickable-link affordances */
+  a[target="_blank"]{
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-color:var(--gold);
+    text-decoration-thickness:1.5px;
+    text-underline-offset:2px;
+    font-weight:600;
+  }
+  a[target="_blank"]:hover{color:var(--gold);}
+  a[target="_blank"]:not(.btn-link)::after{
+    content:"\2197";
+    display:inline-block;
+    margin-left:2px;
+    font-size:0.8em;
+    font-weight:bold;
+  }
+  a.btn-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    padding:6px 14px;
+    border:1.5px solid var(--blue);
+    border-radius:20px;
+    background:#eaf1fb;
+    color:var(--blue) !important;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12.5px;
+    font-weight:bold;
+    text-decoration:none !important;
+  }
+  a.btn-link:hover{background:var(--blue);color:#fff !important;}
+
   /* Top nav */
   nav.topnav{
     position:sticky;
@@ -164,8 +198,6 @@
 
   .hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .hotel-card h3{margin:0 0 6px;color:var(--blue);font-size:17px;}
-  .hotel-card h3 a{color:var(--blue);text-decoration:none;}
-  .hotel-card h3 a:hover{text-decoration:underline;}
   .hotel-card .price{
     display:inline-block;
     background:#eef4ec;
@@ -374,19 +406,21 @@
     <div class="hotel-grid">
       <div class="card hotel-card">
         <span class="badge rec">Top Pick</span>
-        <h3><a href="https://www.hyatt.com/hyatt-place/en-US/houzm-hyatt-place-houston-medical-center" target="_blank" rel="noopener">Hyatt Place Houston &ndash; Medical Center &#8599;</a></h3>
+        <h3><a href="https://www.hyatt.com/hyatt-place/en-US/houzm-hyatt-place-houston-medical-center" target="_blank" rel="noopener">Hyatt Place Houston &ndash; Medical Center</a></h3>
         <div class="price">~USD 100&ndash;150 / night</div>
         <p>3730 Old Spanish Trail, Houston, TX 77021</p>
         <p>~5 min walk to METRORail Red Line (TMC/Museum District stops); free breakfast included; modern, elevator access, quiet.</p>
         <p class="why">Why: best value-to-comfort ratio in the area, easy step-free access for older travelers, and close to casual dining.</p>
+        <a class="btn-link" href="https://www.hyatt.com/hyatt-place/en-US/houzm-hyatt-place-houston-medical-center" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Alternate</span>
-        <h3><a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/houston/hourw/hoteldetail" target="_blank" rel="noopener">Holiday Inn Express &amp; Suites Houston S &ndash; Medical Ctr Area &#8599;</a></h3>
+        <h3><a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/houston/hourw/hoteldetail" target="_blank" rel="noopener">Holiday Inn Express &amp; Suites Houston S &ndash; Medical Ctr Area</a></h3>
         <div class="price">~USD 130&ndash;190 / night</div>
         <p>Near Texas Medical Center / NRG Park, Houston, TX</p>
         <p>Free hot breakfast, shuttle-friendly location, short Uber to Museum District attractions.</p>
         <p class="why">Why: good backup if the top pick is sold out; similarly safe, well-reviewed, senior-friendly.</p>
+        <a class="btn-link" href="https://www.ihg.com/holidayinnexpress/hotels/us/en/houston/hourw/hoteldetail" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
     </div>
     <div class="note">
@@ -516,27 +550,31 @@
     <div class="hotel-grid">
       <div class="card hotel-card">
         <span class="badge rec">Breakfast &middot; Day 2</span>
-        <h3><a href="https://commonbondbrands.com/" target="_blank" rel="noopener">Common Bond Bistro &amp; Bakery &ndash; Med Center &#8599;</a></h3>
+        <h3><a href="https://commonbondbrands.com/" target="_blank" rel="noopener">Common Bond Bistro &amp; Bakery &ndash; Med Center</a></h3>
         <p>Casual French-inspired bakery cafe; pastries, egg dishes, good coffee &mdash; a quick, relaxed option on checkout morning before heading to Space Center Houston.</p>
         <p class="why">~USD 12&ndash;18 pp. Alternative: the hotel's included free breakfast if you'd rather not leave the building early.</p>
+        <a class="btn-link" href="https://commonbondbrands.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Breakfast / Brunch</span>
-        <h3><a href="https://thebreakfastklub.com/" target="_blank" rel="noopener">The Breakfast Klub &#8599;</a></h3>
+        <h3><a href="https://thebreakfastklub.com/" target="_blank" rel="noopener">The Breakfast Klub</a></h3>
         <p>Houston institution known for wings-and-waffles and catfish &amp; grits; ~10&ndash;15 min from the Museum District. Best for a slower morning with no early appointment.</p>
         <p class="why">~USD 15&ndash;20 pp. Expect a short wait on weekends.</p>
+        <a class="btn-link" href="https://thebreakfastklub.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Lunch alternative &middot; Day 1</span>
-        <h3><a href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Local Foods &ndash; Rice Village &#8599;</a></h3>
+        <h3><a href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Local Foods &ndash; Rice Village</a></h3>
         <p>Healthy sandwiches, salads and grain bowls in a bright, easy-to-navigate space; a good swap for Pinewood Cafe if you're already browsing Rice Village.</p>
         <p class="why">~USD 14&ndash;18 pp.</p>
+        <a class="btn-link" href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Dinner alternative</span>
-        <h3><a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ &#8599;</a></h3>
+        <h3><a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ</a></h3>
         <p>Open daily (unlike Truth BBQ, which is closed Mondays) &mdash; smoked turkey and rib tips are standouts. Use this if Day 1 lands on a Sunday or Monday.</p>
         <p class="why">~USD 18&ndash;24 pp.</p>
+        <a class="btn-link" href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
     </div>
   </section>
@@ -546,15 +584,17 @@
     <div class="hotel-grid">
       <div class="card hotel-card">
         <span class="badge rec">Near hotel &middot; Day 1</span>
-        <h3><a href="https://ricevillageshops.com/" target="_blank" rel="noopener">Rice Village &#8599;</a></h3>
+        <h3><a href="https://ricevillageshops.com/" target="_blank" rel="noopener">Rice Village</a></h3>
         <p>~1.7 miles / 8&ndash;10 min Uber from the Museum District. 300+ shops from boutiques and gift stores to Anthropologie, Madewell and Lululemon, plus dozens of cafes.</p>
         <p class="why">Best slotted into Day 1's 4:00&ndash;5:00 PM window (before BBQ) or as a swap for the museum visit if a lighter afternoon is preferred. No entry cost &mdash; browsing only.</p>
+        <a class="btn-link" href="https://ricevillageshops.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Near NASA &middot; Day 2 (optional)</span>
-        <h3><a href="https://www.baybrookmall.com/en/" target="_blank" rel="noopener">Baybrook Mall &#8599;</a></h3>
+        <h3><a href="https://www.baybrookmall.com/en/" target="_blank" rel="noopener">Baybrook Mall</a></h3>
         <p>~10 min from Space Center Houston in League City &mdash; 170+ stores including Macy's, Dillard's and JCPenney, plus an open-air lifestyle wing with a food court.</p>
         <p class="why">Optional: works well if you skip the on-site NASA lunch and eat at the mall's food court instead, keeping total time roughly the same. Adds a mild time squeeze on Day 2 &mdash; only recommended if you're comfortable with a slightly tighter airport buffer.</p>
+        <a class="btn-link" href="https://www.baybrookmall.com/en/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
     </div>
   </section>
