@@ -198,7 +198,8 @@
     flex-wrap:wrap;
   }
 
-  .hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .hotel-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;}
+  .hotel-grid > .card{min-width:0;}
   .hotel-card h3{margin:0 0 6px;color:var(--blue);font-size:17px;}
   .hotel-card .price{
     display:inline-block;
@@ -213,6 +214,20 @@
   }
   .hotel-card p{margin:4px 0;font-size:14px;font-family:Arial,Helvetica,sans-serif;color:var(--text);}
   .hotel-card .why{color:var(--muted);font-size:13px;margin-top:8px;}
+  .card-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    margin:8px 0;
+    padding:8px 10px;
+    background:#f3f6fa;
+    border-radius:6px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12.5px;
+    color:var(--navy);
+  }
+  .card-meta span{white-space:normal;}
+  .card-meta b{font-weight:bold;}
   .badge{
     display:inline-block;
     font-family:Arial,Helvetica,sans-serif;
@@ -379,7 +394,7 @@
 
   <header class="hero">
     <h1>Houston, Texas &mdash; 2-Day Itinerary</h1>
-    <p class="sub">A relaxed, public-transit &amp; rideshare-friendly plan for two &middot; September 2026</p>
+    <p class="sub">A relaxed, Uber-friendly plan for two, no rental car needed &middot; September 2026</p>
     <div class="snapshot">
       <div><div class="label">Arrival</div><div class="value">Day 1, 9:00 AM &middot; IAH</div></div>
       <div><div class="label">Departure</div><div class="value">Day 2, 5:00 PM &middot; IAH (domestic)</div></div>
@@ -397,7 +412,7 @@
             <li><b>Morning:</b> Land at IAH, Uber to hotel, check in</li>
             <li><b>Midday:</b> Lunch near Hermann Park</li>
             <li><b>Afternoon:</b> Hermann Park + Houston Museum of Natural Science</li>
-            <li><b>Evening:</b> Texas BBQ dinner at Truth BBQ</li>
+            <li><b>Evening:</b> Texas BBQ dinner at Goode Company Barbeque</li>
           </ul>
         </div>
         <div class="overview-day">
@@ -412,7 +427,7 @@
       </div>
       <div class="highlight-row">
         <span class="badge must">Must-do: NASA Space Center Houston</span>
-        <span class="badge must">Must-do: Texas BBQ (Truth BBQ)</span>
+        <span class="badge must">Must-do: Texas BBQ (Goode Company Barbeque)</span>
         <span class="badge rec">All transfers by Uber</span>
         <span class="badge rec">Hotel under USD 200/night</span>
       </div>
@@ -469,7 +484,7 @@
         </div>
         <div class="titem">
           <div class="titem-row"><span class="titem-time">12:00 PM</span><span class="titem-cost">~USD 30&ndash;40</span></div>
-          <div class="titem-main"><strong>Lunch at <a href="https://www.hermannpark.org/place/pinewood-cafe/" target="_blank" rel="noopener">Pinewood Cafe</a> or Sandy Witch</strong><span class="loc">Casual cafe inside Hermann Park, sandwiches/salads, plenty of seating</span></div>
+          <div class="titem-main"><strong>Lunch at The Commons at Hermann Park</strong><span class="loc">Wortham Pavilion cafe &amp; food-truck court, inside the park &mdash; ~10 min walk from hotel, no Uber needed. Confirm same-day vendor hours; Local Foods (Dining section) is a reliable backup.</span></div>
         </div>
         <div class="titem">
           <div class="titem-row"><span class="titem-time">1:00 &ndash; 3:30 PM</span><span class="titem-cost">~USD 50</span></div>
@@ -480,21 +495,21 @@
           <div class="titem-main"><strong>Return to hotel, rest</strong><span class="loc">Short walk or 5-min Uber back to hotel</span></div>
         </div>
         <div class="titem transport">
-          <div class="titem-row"><span class="titem-time">5:00 PM</span><span class="titem-cost">~USD 15&ndash;20</span></div>
-          <div class="titem-main">Uber from hotel to Truth BBQ <span class="loc">~20&ndash;25 min drive to the Heights</span></div>
+          <div class="titem-row"><span class="titem-time">5:15 PM</span><span class="titem-cost">~USD 10&ndash;15</span></div>
+          <div class="titem-main">Uber from hotel to Goode Company Barbeque <span class="loc">~5&ndash;10 min drive on Kirby Dr</span></div>
         </div>
         <div class="titem">
-          <div class="titem-row"><span class="titem-time">5:30 &ndash; 6:45 PM</span><span class="titem-cost">~USD 55&ndash;65</span></div>
-          <div class="titem-main"><strong>Dinner: <a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a> &#127829; (the must-do Texas BBQ)</strong><span class="loc">110 S Heights Blvd &mdash; Michelin-recognized brisket, sausage &amp; smoked turkey. Order 2 meat plates + sides to share.</span></div>
+          <div class="titem-row"><span class="titem-time">5:30 &ndash; 6:45 PM</span><span class="titem-cost">~USD 40&ndash;50</span></div>
+          <div class="titem-main"><strong>Dinner: <a href="https://goodecompanybarbeque.com/locations/the-original/" target="_blank" rel="noopener">Goode Company Barbeque</a> &#127829; (the must-do Texas BBQ)</strong><span class="loc">5109 Kirby Dr &mdash; Houston institution since 1977, mesquite-smoked brisket, casual picnic-table atmosphere. Order meat plates + sides to share.</span></div>
         </div>
         <div class="titem transport">
-          <div class="titem-row"><span class="titem-time">7:00 PM</span><span class="titem-cost">~USD 15&ndash;20</span></div>
+          <div class="titem-row"><span class="titem-time">7:00 PM</span><span class="titem-cost">~USD 10&ndash;15</span></div>
           <div class="titem-main">Uber back to hotel</div>
         </div>
       </div>
     </div>
     <div class="note">
-      Truth BBQ hours vary by day: Tue&ndash;Fri 11am&ndash;3pm &amp; 5&ndash;8pm, Sat 11am&ndash;8pm, Sun 11am&ndash;4pm, <strong>closed Mondays</strong>. If Day 1 falls on a Sunday or Monday, swap in <a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ</a> (2100 Taylor St, open daily) or shift BBQ to a late lunch instead of dinner.
+      Goode Company Barbeque (Kirby) is open every day &mdash; Mon&ndash;Thu 11am&ndash;8:30pm, Fri&ndash;Sat 11am&ndash;9pm, Sun 11am&ndash;8:30pm &mdash; so there's no closure day to plan around. If you'd rather try the more widely known <a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a> instead (Michelin-recognized, but closed Mondays and a longer 20&ndash;25 min ride to the Heights), see the Dining section below for details.
     </div>
   </section>
 
@@ -556,30 +571,69 @@
         <span class="badge rec">Breakfast &middot; Day 2</span>
         <h3><a href="https://commonbondbrands.com/" target="_blank" rel="noopener">Common Bond Bistro &amp; Bakery &ndash; Med Center</a></h3>
         <p>Casual French-inspired bakery cafe; pastries, egg dishes, good coffee &mdash; a quick, relaxed option on checkout morning before heading to Space Center Houston.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Sat</b> 7am&ndash;9pm &middot; <b>Sun</b> 7am&ndash;8pm</span><span>&#128663; ~5 min from hotel</span></div>
         <p class="why">~USD 12&ndash;18 pp. Alternative: the hotel's included free breakfast if you'd rather not leave the building early.</p>
         <a class="btn-link" href="https://commonbondbrands.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
         <span class="badge rec">Breakfast / Brunch</span>
         <h3><a href="https://thebreakfastklub.com/" target="_blank" rel="noopener">The Breakfast Klub</a></h3>
-        <p>Houston institution known for wings-and-waffles and catfish &amp; grits; ~10&ndash;15 min from the Museum District. Best for a slower morning with no early appointment.</p>
+        <p>Houston institution known for wings-and-waffles and catfish &amp; grits; best for a slower morning with no early appointment.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Fri</b> 7am&ndash;2pm &middot; <b>Sat&ndash;Sun</b> 8am&ndash;2pm</span><span>&#128663; ~10&ndash;15 min from hotel</span></div>
         <p class="why">~USD 15&ndash;20 pp. Expect a short wait on weekends.</p>
         <a class="btn-link" href="https://thebreakfastklub.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
-        <span class="badge rec">Lunch alternative &middot; Day 1</span>
-        <h3><a href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Local Foods &ndash; Rice Village</a></h3>
-        <p>Healthy sandwiches, salads and grain bowls in a bright, easy-to-navigate space; a good swap for Pinewood Cafe if you're already browsing Rice Village.</p>
-        <p class="why">~USD 14&ndash;18 pp.</p>
-        <a class="btn-link" href="https://localfoodsrestaurant.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
+        <span class="badge rec">Lunch alternative</span>
+        <h3><a href="https://www.localfoodstexas.com/location/local-foods-upper-kirby/" target="_blank" rel="noopener">Local Foods &ndash; Upper Kirby</a></h3>
+        <p>Healthy sandwiches, salads and grain bowls in a bright, easy-to-navigate space; a reliable swap if you'd rather not rely on Hermann Park's food-truck rotation.</p>
+        <div class="card-meta"><span>&#128337; <b>Daily</b> 10am&ndash;8pm</span><span>&#128663; ~10 min from hotel</span></div>
+        <p class="why">~USD 14&ndash;18 pp. 2555 Kirby Dr, corner of Kirby &amp; Westheimer.</p>
+        <a class="btn-link" href="https://www.localfoodstexas.com/location/local-foods-upper-kirby/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
       <div class="card hotel-card">
-        <span class="badge rec">Dinner alternative</span>
+        <span class="badge must">Day 1 dinner pick &middot; Closest BBQ to hotel</span>
+        <h3><a href="https://goodecompanybarbeque.com/locations/the-original/" target="_blank" rel="noopener">Goode Company Barbeque &ndash; Kirby Dr</a></h3>
+        <p>Houston institution since 1977, on Kirby Drive not far from the hotel; mesquite-smoked brisket, come-as-you-are picnic-table atmosphere. Used as the Day 1 dinner in this itinerary.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Thu</b> 11am&ndash;8:30pm &middot; <b>Fri&ndash;Sat</b> 11am&ndash;9pm &middot; <b>Sun</b> 11am&ndash;8:30pm</span><span>&#128663; ~5&ndash;10 min from hotel</span></div>
+        <p class="why">~USD 40&ndash;50 for two. Open every day of the week &mdash; no closure days to plan around.</p>
+        <a class="btn-link" href="https://goodecompanybarbeque.com/locations/the-original/" target="_blank" rel="noopener">Visit Website &rarr;</a>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">BBQ alternative &middot; original pick, Michelin-recognized</span>
+        <h3><a href="https://truthbbq.com/" target="_blank" rel="noopener">Truth BBQ</a></h3>
+        <p>Michelin-recognized brisket, sausage and smoked turkey in the Heights; the pick if you'd rather have a more renowned spot and don't mind a longer ride.</p>
+        <div class="card-meta"><span>&#128337; <b>Tue&ndash;Fri</b> 11am&ndash;3pm &amp; 5&ndash;8pm &middot; <b>Sat</b> 11am&ndash;8pm &middot; <b>Sun</b> 11am&ndash;4pm &middot; <b>closed Mon</b></span><span>&#128663; ~20&ndash;25 min from hotel</span></div>
+        <p class="why">~USD 55&ndash;65 for two. 110 S Heights Blvd &mdash; check the closed Monday / early Sunday closing before planning around it.</p>
+        <a class="btn-link" href="https://truthbbq.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">BBQ alternative</span>
         <h3><a href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Gatlin's BBQ</a></h3>
-        <p>Open daily (unlike Truth BBQ, which is closed Mondays) &mdash; smoked turkey and rib tips are standouts. Use this if Day 1 lands on a Sunday or Monday.</p>
-        <p class="why">~USD 18&ndash;24 pp.</p>
+        <p>Smoked turkey and rib tips are standouts; note this one leans breakfast-through-early-dinner hours and is closed Sundays, so it works best as a late lunch, not a Day 1 dinner swap.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Sat</b> 7am&ndash;6pm &middot; <b>closed Sun</b></span><span>&#128663; ~20&ndash;25 min from hotel</span></div>
+        <p class="why">~USD 18&ndash;24 pp. 3510 Ella Blvd, north Houston.</p>
         <a class="btn-link" href="https://gatlinsbbq.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
       </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Tex-Mex &middot; Rice Village</span>
+        <h3><a href="https://www.cycloneanaya.com/locations/rice-village" target="_blank" rel="noopener">Cyclone Anaya's</a></h3>
+        <p>A Rice Village favorite for 50+ years &mdash; scratch-made enchiladas, tamales and fajitas, plus well-known margaritas. Good option if craving Tex-Mex instead of BBQ or for a Day 1 dinner swap.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Thu</b> 11am&ndash;10pm &middot; <b>Fri</b> 11am&ndash;11pm &middot; <b>Sat</b> 10am&ndash;11pm &middot; <b>Sun</b> 10am&ndash;9pm</span><span>&#128663; ~8&ndash;10 min from hotel</span></div>
+        <p class="why">~USD 20&ndash;28 pp. 5214 Morningside Dr, Rice Village.</p>
+        <a class="btn-link" href="https://www.cycloneanaya.com/locations/rice-village" target="_blank" rel="noopener">Visit Website &rarr;</a>
+      </div>
+      <div class="card hotel-card">
+        <span class="badge rec">Tex-Mex &middot; Museum District</span>
+        <h3><a href="https://www.candentehtx.com/" target="_blank" rel="noopener">Candente</a></h3>
+        <p>Michelin-recognized Tex-Mex just north of the Museum District &mdash; smoked chicken verde enchiladas and brisket nachos stand out. A more upscale option than Cyclone Anaya's.</p>
+        <div class="card-meta"><span>&#128337; <b>Mon&ndash;Thu</b> 11am&ndash;9pm &middot; <b>Fri</b> 11am&ndash;10pm &middot; <b>Sat</b> 10am&ndash;10pm &middot; <b>Sun</b> 10am&ndash;9pm</span><span>&#128663; ~8&ndash;10 min from hotel</span></div>
+        <p class="why">~USD 25&ndash;35 pp. 4306 Yoakum Blvd, Suite 120.</p>
+        <a class="btn-link" href="https://www.candentehtx.com/" target="_blank" rel="noopener">Visit Website &rarr;</a>
+      </div>
+    </div>
+    <div class="note">
+      Two spots you may remember from earlier research &mdash; Pinewood Cafe and Sandy Witch, both previously in Hermann Park &mdash; now show as closed on current listings, so they've been removed from this plan. Day 1 lunch now points to Hermann Park's newer dining area, The Commons (Wortham Pavilion cafe and food trucks), with Local Foods above as a reliable backup a short Uber away.
     </div>
   </section>
 
@@ -612,18 +666,18 @@
         <tr><td>Hotel &times; 1 night</td><td>Hyatt Place Medical Center, approx. rate</td><td class="amt">USD 100&ndash;190</td></tr>
         <tr><td colspan="3" style="background:#f0f0ea;font-weight:bold;color:var(--navy);">Day 1</td></tr>
         <tr><td>Uber: IAH &rarr; Hotel</td><td>~35&ndash;40 min</td><td class="amt">USD 47&ndash;55</td></tr>
-        <tr><td>Lunch (Hermann Park cafe)</td><td>2 people</td><td class="amt">USD 30&ndash;40</td></tr>
+        <tr><td>Lunch (The Commons at Hermann Park)</td><td>2 people</td><td class="amt">USD 30&ndash;40</td></tr>
         <tr><td>Houston Museum of Natural Science</td><td>2 adult tickets</td><td class="amt">USD 32&ndash;50</td></tr>
-        <tr><td>Uber: Hotel &harr; Truth BBQ</td><td>round trip</td><td class="amt">USD 30&ndash;40</td></tr>
-        <tr><td>Texas BBQ dinner (Truth BBQ)</td><td>2 meat plates + sides</td><td class="amt">USD 55&ndash;65</td></tr>
-        <tr class="subtotal"><td colspan="2">Day 1 subtotal</td><td class="amt">USD 194&ndash;250</td></tr>
+        <tr><td>Uber: Hotel &harr; Goode Company BBQ</td><td>round trip</td><td class="amt">USD 20&ndash;28</td></tr>
+        <tr><td>Texas BBQ dinner (Goode Company Barbeque)</td><td>meat plates + sides</td><td class="amt">USD 40&ndash;50</td></tr>
+        <tr class="subtotal"><td colspan="2">Day 1 subtotal</td><td class="amt">USD 169&ndash;223</td></tr>
         <tr><td colspan="3" style="background:#f0f0ea;font-weight:bold;color:var(--navy);">Day 2</td></tr>
         <tr><td>Uber: Hotel &harr; Space Center Houston</td><td>round trip</td><td class="amt">USD 70&ndash;90</td></tr>
         <tr><td>Space Center Houston tickets</td><td>2 adults (book online)</td><td class="amt">USD 56&ndash;60</td></tr>
         <tr><td>Lunch on-site</td><td>2 people</td><td class="amt">USD 30&ndash;40</td></tr>
         <tr><td>Uber: Hotel &rarr; IAH</td><td>~35&ndash;45 min</td><td class="amt">USD 47&ndash;55</td></tr>
         <tr class="subtotal"><td colspan="2">Day 2 subtotal</td><td class="amt">USD 203&ndash;245</td></tr>
-        <tr class="grand"><td colspan="2">Estimated Grand Total (hotel + food + tickets + all rides)</td><td class="amt">~USD 500&ndash;700</td></tr>
+        <tr class="grand"><td colspan="2">Estimated Grand Total (hotel + food + tickets + all rides)</td><td class="amt">~USD 470&ndash;660</td></tr>
       </table>
       </div>
     </div>
@@ -643,7 +697,7 @@
         <li>The hotel's METRORail Red Line access is a handy free backup if a rideshare is delayed &mdash; it connects the Museum District to downtown and the Texas Medical Center.</li>
         <li>Ask the front desk for a late luggage storage tag on Day 2 morning &mdash; this is a free, standard service at both recommended hotels.</li>
         <li>Keep a light day bag for Day 1 sightseeing (water, sunscreen, any medications) since the main luggage stays at the hotel until departure day.</li>
-        <li>Once your exact travel dates are confirmed, re-check hotel rates, Truth BBQ hours, and Space Center Houston opening time (they shift slightly between weekday and weekend schedules).</li>
+        <li>Once your exact travel dates are confirmed, re-check hotel rates, restaurant hours, and Space Center Houston opening time (they shift slightly between weekday and weekend schedules, and small restaurants occasionally change hours).</li>
       </ul>
     </div>
   </section>
